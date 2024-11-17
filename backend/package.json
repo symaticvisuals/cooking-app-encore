@@ -11,7 +11,7 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "postinstall": "npx prisma generate --schema=admin/prisma/schema.prisma"
+    "postinstall": "npx prisma generate --schema=recipe_app/prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
