@@ -37,7 +37,6 @@ export const registerUser = api(
     if (checkUser) {
       throw APIError.alreadyExists("User already exists");
     }
-
     const result = await UserService.register(params);
     return result;
   }
