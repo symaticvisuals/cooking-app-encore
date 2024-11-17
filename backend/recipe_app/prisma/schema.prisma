@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://cooking-app-7z4i:shadow-cst0igjmfhrmnd37hfp0@127.0.0.1:9500/encore_prisma_test?sslmode=disable"
+  url      = env("DATABASE_URL")
 }
 
 model User {
