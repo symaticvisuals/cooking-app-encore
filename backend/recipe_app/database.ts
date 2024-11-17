@@ -14,7 +14,7 @@ const DB = new SQLDatabase("cooking_app", {
 const prisma = new PrismaClient({
   datasources: {
     db: {
-      url: DB.connectionString,
+      url: "postgresql://postgres.izzqtyfeylanzkrpzdom:cooking-app@123@aws-0-ap-south-1.pooler.supabase.com:5432/postgres",
     },
   },
 });
