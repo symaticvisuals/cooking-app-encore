@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://cooking-app-7z4i:shadow-cst0igjmfhrmnd37hfp0@127.0.0.1:9500/encore_prisma_test?sslmode=disable"
+}
+
+model User {
+  id         String       @id @default(cuid())
+  email      String       @unique
+  name       String?
+  password   String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Ingredient Ingredient[]
+}
+
+model Ingredient {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Recipe    Recipe[]
+  userId    String
+  User      User     @relation(fields: [userId], references: [id])
+}
+
+model Recipe {
+  id                String              @id @default(cuid())
+  name              String
+  description       String
+  ingredients       Ingredient[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  RecipeInstruction RecipeInstruction[]
+}
+
+model RecipeInstruction {
+  id          String   @id @default(cuid())
+  step        Int
+  instruction String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  recipeId    String
+  Recipe      Recipe   @relation(fields: [recipeId], references: [id])
+}

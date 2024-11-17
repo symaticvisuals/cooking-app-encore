@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Encore + Next Starter",
+  "license": "MPL-2.0",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20",
+    "prisma": "^5.22.0",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "postinstall": "npx prisma generate --schema=admin/prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
+    "bcrypt": "^5.1.1",
+    "encore.dev": "^1.43.9",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
